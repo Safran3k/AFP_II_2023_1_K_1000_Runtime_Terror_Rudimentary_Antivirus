@@ -33,6 +33,8 @@ Jogosultságok: Felhasználó, vendég
 
 ## 6. Igényelt üzleti folyamatok modellje
 
+#### Az igényelt modell szerint az alkalmazás lehetővé teszi a felhasználóknak, hogy manuálisan átvizsgálják az állományokat a vírusok és más fenyegetések észlelése érdekében. Az alkalmazás, amennyiben fenyegetést észlel, azonosítja a gyanús állományokat, és jelzi a felhasználóknak. A felhasználóknak lehetőségük van arra, hogy kiválasszák az átvizsgálandó mappákat vagy fájlokat. Az alkalmazás ezenkívül képes lesz vírusdefiníciókat frissíteni, hogy mindig naprakész legyen a vírusok és más fenyegetések észlelésében. Célunk a folyamat egyszerűsítése, hogy a felhasználók hatékonyabban tudjanak védekezni a különböző fenyegetések ellen.
+
 ## 7. Követelménylista
 
 | Id | Modul | Név | Leírás |
