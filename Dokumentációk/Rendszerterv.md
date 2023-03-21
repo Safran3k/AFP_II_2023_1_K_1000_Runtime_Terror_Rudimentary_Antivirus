@@ -85,6 +85,10 @@ ellenőrzése a rendszer által megvalósított üzleti szolgáltatások verifik
 A teszteléseket a fejlesztői csapat minden tagja elvégzi.
 Egy teszt eredményeit a tagok dokumentálják külön fájlokba.
 
+## 11. Telepítési terv
+Az oldal elindításához szükséges programok:
+    -XAMPP
+A telepítő fájl elindításával, követni kell a varázsló utasításait, többek között kiválasztani azt, hogy hova telepítse az alkalmazást, készítsen-e parancsikont az asztalra, stb. Miután végzett a telepítő, az alkalmazás haszálatra készen áll, és a parancsikonra duplán kattintva el lehet indítani a szoftvert.
 
 ## 12. Karbantartási terv
 Az alkalmazásunk mindig naprakész lesz, úgy ahogy a fejlesztői csapat is. Bármilyen hiba javításával vagy új funkciók bevezetésével kapcsolatos ügyekkel kereshetnek minket.
