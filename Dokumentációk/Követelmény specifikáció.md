@@ -29,6 +29,8 @@ Jogosultságok: Felhasználó, vendég
 
 ## 5. Jelenlegi üzleti folyamatok modellje
 
+#### A jelenlegi modell szerint a felhasználóknak nincs lehetőségük vírusirtó programok használatára. Ennek hiánya nagy pénzügyi kockázatot jelent a vállalat számára, mivel a különböző vírusok, malware-ek és egyéb rosszindulatú programok könnyen megfertőzhetik a számítógépeket és a hálózatot, ezáltal veszélyeztetik az üzleti folyamatok zavartalan működését, valamint a fontos üzleti adatok biztonságát. Ezért elengedhetetlen, hogy a különböző fenyegetésekkel szemben bevezessünk egy hatékony vírusvédelmi szoftvert a vállalat számára, amely megfelelően képes védeni a számítógépeket.
+
 ## 6. Igényelt üzleti folyamatok modellje
 
 ## 7. Követelménylista
