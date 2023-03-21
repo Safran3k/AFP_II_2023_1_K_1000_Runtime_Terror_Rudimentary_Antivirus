@@ -63,3 +63,17 @@ Felhasználó: Több fájlt/mappát/meghajtót is tud egyszerre vizsgáltatni, e
   - Fertőzött fájlok törlése/karanténba helyezése
   - Folyamatok leállítása
 
+
+## 6. Fizikai környezet
+A projekt kizárólag ablakos alkalmazásként elérhető, windows operációs rendszeren
+
+### Vásárolt softwarekomponensek és külső rendszerek
+Nincsenek megvásárolt softwarekomponenseink és külső rendszereink
+
+### Fejlesztő eszközök
+- Notepad++
+- Visual Studio 2022
+- Visual Studio Code
+- MySql Workbench
+- .NET Framework
+- JavaScript
