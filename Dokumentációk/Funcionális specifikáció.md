@@ -19,3 +19,7 @@ Az ügyfél célja, hogy olyan hatékony és megbízható vírusirtó rendszert 
  - Megfelelő támogatás és karbantartás a hibák és problémák gyors megoldása érdekében
 
 A vágyálomrendszer megvalósítása jelentős mértékben hozzájárulna az ügyfél üzleti folyamatainak hatékonyságához és eredményességéhez.
+
+## 3. Jelenlegi üzleti folyamatok modellje
+
+A jelenlegi üzleti folyamatok modellje szerint a felhasználóknak nincs lehetőségük arra, hogy vírusirtó alkalmazást használjanak. Ennek hiánya nagy kockázatot jelent a vállalat számára, mivel a különböző vírusok, malware-ek és egyéb rosszindulatú programok könnyen megfertőzhetik a számítógépeket és a hálózatot, és ezáltal veszélyeztetik az üzleti folyamatok zavartalan működését, valamint a fontos üzleti adatok biztonságát. A vírusok és más fenyegetések elleni védelem hiánya komoly pénzügyi veszteséget okozhat a vállalatnak, és negatív hatással lehet a vállalat hírnevére is. Ezért elengedhetetlen, hogy bevezessünk egy hatékony vírusvédelmi szoftvert a vállalat számára, amely megfelelően képes védeni a számítógépeket és az adatokat a különböző fenyegetésekkel szemben.
