@@ -54,3 +54,9 @@ Regisztrált felhasználó: Számára elérhető több fájl/meghajtó átvizsg�
 ![folyamatok](https://i.imgur.com/kELBanF.png)
 
 ![vizsgalat](https://i.imgur.com/ZFkC88p.png)
+
+## 8. Forgatókönyvek
+
+Nem regisztrált felhasználó: Az alkalmazás azon nem regisztrált felhasználói akik az éppen futó processzeket meg tudják nézni, illetve fájlokat tudnak átvizsgálni.
+
+Regisztrált felhasználó: Az alkalmazás azon felhasználói akik a hozzáfárást kapnak az éppen futó processzek leállítására, illetve több fájlt vagy mappát át tudnak vizsgálni.
