@@ -10,6 +10,8 @@
 
 ## 2. Jelenlegi helyzet
 
+#### Az alkalmazás célja, hogy segítséget nyújtson a rendszerben található esetleges fenyegetések (vírusok, kártékony programok) felderítésében, és hosszabb távon egy teljes értékű és megbízható vírusirtó szolgáltatást nyújtson a megrendelőnek. A későbbiekben a terveink szerint többféle platformon is elérhető lesz az alkalmazás, például androidra és IOS- re. A megrendelő részére lehetőséget biztosít mappák, illetve a különböző precesszek (folyamatok) átvizsgálására.
+
 ## 3. Vágyálom rendszer
 
 ## 4. Funkcionális követelmények
