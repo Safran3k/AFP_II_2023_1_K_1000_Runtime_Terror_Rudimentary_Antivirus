@@ -32,3 +32,18 @@ A rendszer egy kezdetleges vírusírtó software, ahol a regisztrált felhaszná
 
 ## 3. Üzleti folyamatok modellje
 ![uzletimodel](https://i.imgur.com/j4IZcXH.png)
+
+## 4. Követelmények
+
+### Funkcionális követelmények
+
+Lásd: Funckionális követelmények
+### Nemfunkcionális követelmények
+
+| ID | Megnevezés | Leírás |
+| --- | --- | --- |
+| K1 | Adat hozzáférés | Egy felhasználó/vendég nem férhet hozzá más felhasználóknak az adataihoz 
+| K2 | Vendég szerepkör | Egy vendég nem használhatja a regisztrált felhasználók előnyeit |
+
+### Támogatott eszközök
+Csak windows operációs rendszert támogatja jelen pillanatban, később mobil alkalmazásként is elérhető lesz a vírusírtó szoftverünk.
