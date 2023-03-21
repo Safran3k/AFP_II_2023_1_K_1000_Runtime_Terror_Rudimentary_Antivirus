@@ -32,3 +32,14 @@ Jogosultságok: Felhasználó, vendég
 ## 6. Igényelt üzleti folyamatok modellje
 
 ## 7. Követelménylista
+
+| Id | Modul | Név | Leírás |
+| :---: | --- | --- | --- |
+| K1 | Felhasználói rendszer | Bejelentkezés | A felhasználó be tud jelentkezni az alkalmazásba |
+| K2 | Felhasználói rendszer | Jelszó változtatás | A regisztrált felhasználók módosíthatják a jelszavukat |
+| K3 | Megjelenítés | Folyamatok megjelenítése | A felhasználók láthatják az aktuálisan futó folyamatokat |
+| K4 | Leállítás | Folyamat leállítása | A felhasználó leállíthatja a kiválasztott folyamatot |
+| K5 | Tallózás | Fájlok és mappák megjelenítése | A felhasználók böngészhetnek a fájlok és mappák között |
+| K6 | Vizsgálat | Fájlok és mappák ellenőrzése | A felhasználók átvizsgálhatják a kiválasztott fájlokat vagy mappákat |
+| K7 | Frissítés | Vírusdefiníciók frissítése | Az alkalmazás frissíti a vírusdefiníciókat, hogy mindig naprakész legyen a védelem |
+| K8 | Értesítés | Felhasználói értesítések | A rendszer értesíti a felhasználókat, ha káros állományt találtak a rendszerben |
