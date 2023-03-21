@@ -77,3 +77,10 @@ Nincsenek megvásárolt softwarekomponenseink és külső rendszereink
 - MySql Workbench
 - .NET Framework
 - JavaScript
+
+## 10. Tesztterv
+
+A tesztelések célja a rendszer és komponensei funkcionalitásának teljes vizsgálata,
+ellenőrzése a rendszer által megvalósított üzleti szolgáltatások verifikálása.
+A teszteléseket a fejlesztői csapat minden tagja elvégzi.
+Egy teszt eredményeit a tagok dokumentálják külön fájlokba.
