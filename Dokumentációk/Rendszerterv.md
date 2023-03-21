@@ -47,3 +47,19 @@ Lásd: Funckionális követelmények
 
 ### Támogatott eszközök
 Csak windows operációs rendszert támogatja jelen pillanatban, később mobil alkalmazásként is elérhető lesz a vírusírtó szoftverünk.
+
+## 5. Funkcionális terv
+
+### 5.1 Rendszerszereplők
+Vendég: Egyesével tud fájllokat vizsgáltatni
+Felhasználó: Több fájlt/mappát/meghajtót is tud egyszerre vizsgáltatni, emellett a folyamatokat is be tudja záratni.
+
+### 5.2 Menühierarchiák
+- Bejelentkezés
+  - Bejelentkezés
+  - Regisztráció
+- Főmenü
+  - Több fájl/mappa/meghajtó vizsgálata
+  - Fertőzött fájlok törlése/karanténba helyezése
+  - Folyamatok leállítása
+
