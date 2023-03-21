@@ -60,3 +60,10 @@ Regisztrált felhasználó: Számára elérhető több fájl/meghajtó átvizsg�
 Nem regisztrált felhasználó: Az alkalmazás azon nem regisztrált felhasználói akik az éppen futó processzeket meg tudják nézni, illetve fájlokat tudnak átvizsgálni.
 
 Regisztrált felhasználó: Az alkalmazás azon felhasználói akik a hozzáfárást kapnak az éppen futó processzek leállítására, illetve több fájlt vagy mappát át tudnak vizsgálni.
+
+## 9 Fogalomszótár
+
+**Processz**: Éppen működő programrész, amely bent van a számítógép memóriájában és futtatás alatt áll, feladatát végzi. 
+
+**Vírusdefiníciók**: Olyan adatbázisok, amelyek a vírusok és más kártékony programok azonosításához szükséges információkat tartalmazzák.
+
