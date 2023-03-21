@@ -27,3 +27,16 @@ A jelenlegi üzleti folyamatok modellje szerint a felhasználóknak nincs lehet�
 ## 4. Igényelt üzleti folyamatok modellje
 
 Az igényelt üzleti folyamatok modellje szerint az alkalmazás lehetővé teszi a felhasználóknak, hogy manuálisan átvizsgálják az állományokat a vírusok és más fenyegetések észlelése érdekében. Az alkalmazás azonosítja a gyanús állományokat, és jelzi a felhasználóknak, ha fenyegetést észlel. A felhasználóknak lehetőségük van arra, hogy kiválasszák az átvizsgálandó mappákat vagy fájlokat, majd az alkalmazás elvégzi az átvizsgálást, és jelzi, ha talált valamilyen fenyegetést. Az alkalmazás ezenkívül képesek lesznek vírusdefiníciókat frissíteni, hogy mindig naprakész legyen a vírusok és más fenyegetések észlelésében. A folyamat egyszerűsödik, így a felhasználók hatékonyabban tudnak védekezni a különböző fenyegetések ellen.
+
+## 5. Követelménylista
+
+| Id | Modul | Név | Leírás |
+| :---: | --- | --- | --- |
+| K1 | Felhasználói rendszer | Bejelentkezés | A felhasználó be tud jelentkezni az alkalmazásba |
+| K2 | Felhasználói rendszer | Jelszó változtatás | A regisztrált felhasználók módosíthatják a jelszavukat |
+| K3 | Megjelenítés | Folyamatok megjelenítése | A felhasználók láthatják az aktuálisan futó folyamatokat |
+| K4 | Leállítás | Folyamat leállítása | A felhasználó leállíthatja a kiválasztott folyamatot |
+| K5 | Tallózás | Fájlok és mappák megjelenítése | A felhasználók böngészhetnek a fájlok és mappák között |
+| K6 | Vizsgálat | Fájlok és mappák ellenőrzése | A felhasználók átvizsgálhatják a kiválasztott fájlokat vagy mappákat |
+| K7 | Frissítés | Vírusdefiníciók frissítése | Az alkalmazás frissíti a vírusdefiníciókat, hogy mindig naprakész legyen a védelem |
+| K8 | Értesítés | Felhasználói értesítések | A rendszer értesíti a felhasználókat, ha káros állományt találtak a rendszerben |
