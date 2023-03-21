@@ -46,3 +46,11 @@ Az igényelt üzleti folyamatok modellje szerint az alkalmazás lehetővé teszi
 Nem regisztrált felhasználó: Számára elérhető egy az általa választott fájl átvizsgálása.
 
 Regisztrált felhasználó: Számára elérhető több fájl/meghajtó átvizsgálása, processzek (folyamatok) ellenőrzése, bezárása.
+
+## 7. Képernyőtervek
+
+![bejelentkezes](https://i.imgur.com/hbYxX31.png)
+
+![folyamatok](https://i.imgur.com/kELBanF.png)
+
+![vizsgalat](https://i.imgur.com/ZFkC88p.png)
