@@ -18,6 +18,15 @@
 
 ## 4. Funkcionális követelmények
 
+1. Regisztrációs felület
+2. Bejelentkezési felület
+3. Vizsgálandó fájl kiválasztás
+ - a felhasználó kitudja választani azt hogy mely mappáit, alkalmazásait szeretné átvizsgálni.
+4. Beállítások menüpont
+ - a felhasználó szerkesztheti az adatait
+
+Jogosultságok: Felhasználó, vendég
+
 ## 5. Jelenlegi üzleti folyamatok modellje
 
 ## 6. Igényelt üzleti folyamatok modellje
