@@ -7,3 +7,15 @@
 ## 1. Jelenlegi helyzet leírása
 
 Egy olyan kezdetleges vírusirtót fejlesztünk megrendelőnk részére, amely segítségével könnyedén feltudja mérni hogy az adott rendszerén fellelhető-e bárminemű fenyegetés (vírusok, kártékony programok). Illetve, nem titkolt célja ezen alkalmazásnak, hogy későbbiekben a továbvbfejlesztést követően egy teljes értékű és megbízható vírusirtó szolgáltatást nyújtson a megrendelő részére. Másik pozitívum az alkalmazást illetően hogy többféle eszközön elérhető lesz, későbbiekben mobil eszközökre is szeretnénk az alkalmazást lefejleszteni. A megrendelő részére lehetőséget biztosít az alkamazás adott mappák illetve, a különböző precesszek (folyamatok) átvizsgálására.
+
+## 2. Vágyálomrendszer leírása
+
+Az ügyfél célja, hogy olyan hatékony és megbízható vírusirtó rendszert használjon, amely megvédi számítógépeit a vírusoktól és kártevőktől. Ügyfelünk ragaszkodott hozzá hogy .NET framework-öt használjunk, és a fejlesztést C# nyelven valósítsuk meg, ami a nagymértékű támogatottságának, és az objektum orientáltságának köszönhetően lehetővé teszi hogy az alkalmazást későbbiekben tovább fejlesszük. A vágyálomrendszernek tartalmaznia kell a következőket:
+
+ - Automatikus vírusdefiníciók frissítés
+ - Hatékony fájlanalízis és víruskeresés
+ - Éppen futó folyamatok ellenőrzése
+ - Egyszerű használat és felhasználóbarát felület
+ - Megfelelő támogatás és karbantartás a hibák és problémák gyors megoldása érdekében
+
+A vágyálomrendszer megvalósítása jelentős mértékben hozzájárulna az ügyfél üzleti folyamatainak hatékonyságához és eredményességéhez.
