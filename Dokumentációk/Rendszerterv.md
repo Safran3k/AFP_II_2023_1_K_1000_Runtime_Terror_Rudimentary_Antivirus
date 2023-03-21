@@ -29,3 +29,6 @@ A rendszer egy kezdetleges vírusírtó software, ahol a regisztrált felhaszná
 
 ### 2.4 Mérföldkövek:
    * Prototípus átadása
+
+## 3. Üzleti folyamatok modellje
+![uzletimodel](https://i.imgur.com/j4IZcXH.png)
