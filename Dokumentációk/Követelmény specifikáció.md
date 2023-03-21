@@ -14,6 +14,8 @@
 
 ## 3. Vágyálom rendszer
 
+#### Az ügyfél célja, hogy olyan hatékony és megbízható vírusirtó rendszert használjon, amely megvédi számítógépeit a vírusoktól és kártevőktől. Ügyfelünk ragaszkodott hozzá hogy .NET framework-öt használjunk, és a fejlesztést C# nyelven valósítsuk meg, ami a nagymértékű támogatottságának, és az objektum orientáltságának köszönhetően lehetővé teszi hogy az alkalmazást későbbiekben tovább fejlesszük. A vágyálomrendszer megvalósítása jelentős mértékben hozzájárulna az ügyfél üzleti folyamatainak hatékonyságához és eredményességéhez.
+
 ## 4. Funkcionális követelmények
 
 ## 5. Jelenlegi üzleti folyamatok modellje
