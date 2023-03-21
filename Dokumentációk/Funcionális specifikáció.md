@@ -40,3 +40,9 @@ Az igényelt üzleti folyamatok modellje szerint az alkalmazás lehetővé teszi
 | K6 | Vizsgálat | Fájlok és mappák ellenőrzése | A felhasználók átvizsgálhatják a kiválasztott fájlokat vagy mappákat |
 | K7 | Frissítés | Vírusdefiníciók frissítése | Az alkalmazás frissíti a vírusdefiníciókat, hogy mindig naprakész legyen a védelem |
 | K8 | Értesítés | Felhasználói értesítések | A rendszer értesíti a felhasználókat, ha káros állományt találtak a rendszerben |
+
+## 6. Használati esetek
+
+Nem regisztrált felhasználó: Számára elérhető egy az általa választott fájl átvizsgálása.
+
+Regisztrált felhasználó: Számára elérhető több fájl/meghajtó átvizsgálása, processzek (folyamatok) ellenőrzése, bezárása.
