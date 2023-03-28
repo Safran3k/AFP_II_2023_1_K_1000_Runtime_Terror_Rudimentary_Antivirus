@@ -78,6 +78,11 @@ Nincsenek megvásárolt softwarekomponenseink és külső rendszereink
 - .NET Framework
 - JavaScript
 
+## 8. Adatbázis terv
+Az adatbázis, amivel a programunk dolgozik, két egymástól független táblából áll. A users és az antivirushashcodes. A users táblába a felhasználóról tárolunk alapvető adatokat, a antivirushashcodes táblába pedig a vírusos hash kódókat tartalmazza. A program ezekkel a kódokkal veti össze a felhasználó fájljai által legenerált hash kódot.
+
+![adatbazisterv](https://i.imgur.com/wFS86KC.png)
+
 ## 10. Tesztterv
 
 A tesztelések célja a rendszer és komponensei funkcionalitásának teljes vizsgálata,
