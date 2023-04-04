@@ -8,23 +8,23 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Futo Richard\\.nuget\\packages\\": {}
+    "C:\\Users\\David\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Futo Richard\\Desktop\\Negyedik félév\\AFP II. gy\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+      "projectUniqueName": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
       "projectName": "Rudimentary_Antivirus",
-      "projectPath": "C:\\Users\\Futo Richard\\Desktop\\Negyedik félév\\AFP II. gy\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
-      "packagesPath": "C:\\Users\\Futo Richard\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Futo Richard\\Desktop\\Negyedik félév\\AFP II. gy\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
+      "projectPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+      "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Futo Richard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0-windows7.0"
+        "net5.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -51,7 +51,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -63,7 +64,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.415\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

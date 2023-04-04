@@ -7,6 +7,17 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <ProgressBar HorizontalAlignment="Left" Height="28" Margin="150,396,0,0" VerticalAlignment="Top" Width="640"/>
+        <Button Content="Scan" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
+        <TabControl Margin="10,0,10,59">
+            <TabItem Header="Tasks">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Scanner">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+        <Button Content="Terminate" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
 
     </Grid>
 </Window>
