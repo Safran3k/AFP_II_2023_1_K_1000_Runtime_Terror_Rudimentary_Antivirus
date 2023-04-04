@@ -14,7 +14,7 @@
                 <Separator Height="100" Margin="0" Background="Black"/>
 
                 <Label Content="Felhasználónév" FontSize="15"/>
-                <TextBox x:Name="tbUserName" FontSize="23" Height="40"/>
+                <TextBox x:Name="tbUserName" FontSize="23" Height="40" TextChanged="tbUserName_TextChanged"/>
                 <Label Content="Jelszó" FontSize="15"/>
                 <PasswordBox x:Name="tbPassword" FontSize="23" Height="40"/>
 
