@@ -23,6 +23,23 @@ namespace Rudimentary_Antivirus
         public MainWindow()
         {
             InitializeComponent();
+
+            TabItem selectedTabItem = tabControl.SelectedItem as TabItem;
+
+            // Check if TabItem 1 is selected
+            if (selectedTabItem == Tasks)
+            {
+                btnScan.IsEnabled = true;
+                btnTerminate.IsEnabled = false;
+            }
+            else if (selectedTabItem == Scanner) { }
+            {
+                btnScan.IsEnabled = false;
+                btnTerminate.IsEnabled = true;
+            }
         }
+        
+        
+
     }
 }

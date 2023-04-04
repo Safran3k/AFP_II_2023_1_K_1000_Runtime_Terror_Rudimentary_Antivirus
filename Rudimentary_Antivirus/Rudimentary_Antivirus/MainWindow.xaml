@@ -8,16 +8,17 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ProgressBar HorizontalAlignment="Left" Height="28" Margin="150,396,0,0" VerticalAlignment="Top" Width="640"/>
-        <Button Content="Scan" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
-        <TabControl Margin="10,0,10,59">
-            <TabItem Header="Tasks">
+        <Button x:Name="btnScan" Content="Scan" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
+        <TabControl Margin="10,0,10,59" Name="tabControl">
+            <TabItem Header="Tasks" Name="Tasks">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="Scanner">
-                <Grid Background="#FFE5E5E5"/>
+            <TabItem Header="Scanner" Name="Scanner" Margin="-2,0,-2,0">
+                <Grid Background="#FFE5E5E5">
+                </Grid>
             </TabItem>
         </TabControl>
-        <Button Content="Terminate" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
+        <Button x:Name="btnTerminate" Content="Terminate" HorizontalAlignment="Left" Margin="10,396,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
 
     </Grid>
 </Window>
