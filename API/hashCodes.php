@@ -5,9 +5,10 @@ include("./db.php");
 
 $request = $_SERVER['REQUEST_METHOD'];
 
+
 switch ($request) {
-    case 'GET': //select
-        
+    case 'GET': 
+
 		break;
 
         default:
