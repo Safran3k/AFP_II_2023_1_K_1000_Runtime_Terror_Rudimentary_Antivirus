@@ -22,6 +22,8 @@ namespace Rudimentary_Antivirus
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private bool registered;
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -55,7 +57,7 @@ namespace Rudimentary_Antivirus
                         if (reader.Read())
                         {
                             result = reader["Password"].ToString().Trim();
-                            registered = Convert.ToBoolean(reader["IsAdmin"]);
+                            registered = true;
                             username = reader["Username"].ToString();
                         }
 
@@ -109,5 +111,12 @@ namespace Rudimentary_Antivirus
             return Convert.ToBase64String(textBytes);
         }
 
+        private void btn_GuestLogin_Click(object sender, RoutedEventArgs e)
+        {
+            registered = false;
+            MainWindow newWindow = new MainWindow(registered, "Vendég");
+            newWindow.Show();
+            Close();
+        }
     }
 }
