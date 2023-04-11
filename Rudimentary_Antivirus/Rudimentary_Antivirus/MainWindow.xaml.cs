@@ -20,6 +20,18 @@ namespace Rudimentary_Antivirus
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool isRegistered;
+        private string username;
+
+        public MainWindow(bool registered, string username)
+        {
+            InitializeComponent();
+
+            this.isRegistered = registered;
+            this.username = username;
+
+            // Do any other initialization here
+        }
         public MainWindow()
         {
             InitializeComponent();

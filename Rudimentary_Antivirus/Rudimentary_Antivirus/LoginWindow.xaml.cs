@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,7 +44,7 @@ namespace Rudimentary_Antivirus
                 }
 
                 string result = string.Empty;
-                bool admin = false;
+                bool registered = false;
                 string username = string.Empty;
 
                 SqlCommand sqlCom1 = new SqlCommand(data, connection);
@@ -54,7 +55,7 @@ namespace Rudimentary_Antivirus
                         if (reader.Read())
                         {
                             result = reader["Password"].ToString().Trim();
-                            admin = Convert.ToBoolean(reader["IsAdmin"]);
+                            registered = Convert.ToBoolean(reader["IsAdmin"]);
                             username = reader["Username"].ToString();
                         }
 
@@ -71,7 +72,7 @@ namespace Rudimentary_Antivirus
 
                     if (id > 0)
                     {
-                        MainWindow newWindow = new MainWindow(admin, username);
+                        MainWindow newWindow = new MainWindow(registered, username);
                         newWindow.Show();
                         connection.Close();
                         Close();

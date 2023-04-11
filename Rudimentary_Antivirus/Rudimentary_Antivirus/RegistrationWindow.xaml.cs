@@ -62,7 +62,7 @@ namespace Rudimentary_Antivirus
                     }
                     else
                     {
-                        string command2 = "INSERT INTO users(username, password, isAdmin) VALUES('" + tbUsername.Text + "', '" + Enryption(tbPassword.Password.ToString()) + "', '" + 0 + "')";
+                        string command2 = "INSERT INTO users(username, password, isAdmin) VALUES('" + tbUserName.Text + "', '" + Enryption(tbPassword.Password.ToString()) + "', '" + 0 + "')";
 
                         SqlCommand sqlCom2 = new SqlCommand(command2, connection);
                         sqlCom2.CommandType = System.Data.CommandType.Text;
