@@ -16,6 +16,28 @@ switch ($request) {
         break;
 }
 
+function registration($username, $password) {
+    global $connection;
+    $count = count($connection -> query("SELECT * FROM users WHERE userName = '$username';") -> fetch_all(MYSQLI_ASSOC));
+    
+	if ($count == 0) {
+		$result = $connection -> query("INSERT INTO users (userName, password) VALUES ('$username', md5('$password'));");
+		echo json_encode(
+			array(
+				'error' => 0,
+				'message' => 'New user added!'
+			)
+		);
+	}
+	else {
+		echo json_encode(array(
+				'error' => 1,
+				'message' => 'User already exists!'
+			)
+		);
+	}
+}
+
 
 function userExist($u, $p) {
 	global $connection;
