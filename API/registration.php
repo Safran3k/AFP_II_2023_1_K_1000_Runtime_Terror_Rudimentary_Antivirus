@@ -10,16 +10,6 @@ switch ($request) {
         header("Content-Type: application/json");
         $params = json_decode(file_get_contents("php://input"), true);
 
-        if (empty($params["userName"]) || empty($params["password"]) || !userExist($params["userName"], $params["password"])) {
-            echo json_encode( 
-            array(
-                'error' => 1,
-                'message' => 'Login required! Missing or invalid username/password.'
-            )
-        );
-        exit;
-        }
-
         if (!empty($params["userName"]) && !empty($params["password"]))
 		{
 			registration($params["userName"], $params["password"]);
