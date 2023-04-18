@@ -13,78 +13,92 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using RestSharp;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Rudimentary_Antivirus
 {
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml
     /// </summary>
+
+    public class UserRegistrationData
+    {
+        public string userName { get; set; }
+        public string password { get; set; }
+    }
+
+    
     public partial class RegistrationWindow : Window
     {
+        RestClient usersClient = new RestClient("http://localhost/API/registration.php"); //még át kell írni
         public RegistrationWindow()
         {
             InitializeComponent();
         }
-
-        private void btn_Registration_Click(object sender, RoutedEventArgs e)
+        public async Task<bool> RegisterUser(string userName, string password)
         {
-            if (tbUserName.Text == "" || tbPassword.Password == "")
-            {
-                MessageBox.Show("Username and password can't be empty", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else if (tbPassword.Password != tbPasswordAgain.Password)
-            {
-                MessageBox.Show("Passwords aren't matching", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            else
-            {
+            string apiUrl = "http://localhost/API/registration.php";
 
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["recipeConnString"].ConnectionString);
+            var registrationData = new UserRegistrationData()
+            {
+                userName = userName,
+                password = password
+            };
 
-                try
+            using (var client = new HttpClient())
+            {
+                var jsonData = JsonConvert.SerializeObject(registrationData);
+                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(apiUrl, content);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    if (connection.State == System.Data.ConnectionState.Closed)
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    dynamic result = JsonConvert.DeserializeObject(responseContent);
+
+                    if (result.error == 0)
                     {
-                        connection.Open();
-                    }
-
-                    string command1 = "SELECT id FROM users WHERE username = @username";
-
-                    SqlCommand sqlCom1 = new SqlCommand(command1, connection);
-                    sqlCom1.CommandType = System.Data.CommandType.Text;
-                    sqlCom1.Parameters.AddWithValue("@username", tbUserName.Text);
-                    int id = Convert.ToInt32(sqlCom1.ExecuteScalar());
-
-                    if (id > 0)
-                    {
-                        MessageBox.Show("This username already exists", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-
+                        // User registered successfully
+                        return true;
                     }
                     else
                     {
-                        string command2 = "INSERT INTO users(username, password, isAdmin) VALUES('" + tbUserName.Text + "', '" + Enryption(tbPassword.Password.ToString()) + "', '" + 0 + "')";
+                        // Registration failed
+                        //MessageBox.Show(jsonData);
+                        MessageBox.Show(result.message.ToString());
 
-                        SqlCommand sqlCom2 = new SqlCommand(command2, connection);
-                        sqlCom2.CommandType = System.Data.CommandType.Text;
-                        sqlCom2.ExecuteNonQuery();
 
-                        MessageBox.Show("Successful registration", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                        LoginWindow newWindow = new LoginWindow();
-                        newWindow.Show();
-                        Close();
+                        return false;
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                finally
-                {
-                    connection.Close();
+                    // Error occurred while sending request
+                    MessageBox.Show("An error occurred while registering the user.");
+                    return false;
                 }
             }
         }
+
+        private async void btn_Registration_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = tbUserName.Text;
+            string password = tbPassword.Password;
+
+            bool success = await RegisterUser(userName, password);
+
+            if (success)
+            {
+                MessageBox.Show("User registered successfully!");
+            }
+            else
+            {
+                // Registration failed
+            }
+        }
+
 
         private void btn_Back_Click(object sender, RoutedEventArgs e)
         {
