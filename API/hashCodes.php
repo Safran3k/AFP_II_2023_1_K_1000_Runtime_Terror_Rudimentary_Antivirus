@@ -8,7 +8,20 @@ $request = $_SERVER['REQUEST_METHOD'];
 
 switch ($request) {
     case 'GET': 
-
+      if (getFileHashCode($_GET["fileHashCode"])) {
+        echo json_encode(array(
+            'error' => 0,
+            'message' => 'The hash code is in the table.'
+          )
+        );
+      }
+      else {
+        echo json_encode(array(
+            'error' => 1,
+            'message' => 'The hash code is not in the table.'
+          )
+        );
+      }
 		break;
 
         default:
