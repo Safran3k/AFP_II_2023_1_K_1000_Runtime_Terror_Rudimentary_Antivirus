@@ -24,6 +24,23 @@ switch ($request) {
       }
 		break;
 
+    case 'POST':
+      header("Content-Type: application/json");
+      $params = json_decode(file_get_contents("php://input"), true);
+
+      if (!empty($params["fileHashCode"]))
+      {
+        flagFileHashCodeAndStore($params["fileHashCode"]);
+      }
+      else {
+        echo json_encode(array(
+              'error' => 1,
+              'message' => 'Missing hash code!'
+            )
+          );
+      }
+    break;
+
         default:
         header('HTTP/1.1 405 Method Not Allowed');
         break;
