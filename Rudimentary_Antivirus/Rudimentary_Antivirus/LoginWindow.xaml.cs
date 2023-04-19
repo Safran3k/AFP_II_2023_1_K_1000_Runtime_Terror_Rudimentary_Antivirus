@@ -63,7 +63,7 @@ namespace Rudimentary_Antivirus
             if (success)
             {
                 MessageBox.Show("User logged in successfully!");
-                MainWindow newWindow = new MainWindow();
+                MainWindow newWindow = new MainWindow(true, userName);
                 Close();
                 newWindow.Show();
 

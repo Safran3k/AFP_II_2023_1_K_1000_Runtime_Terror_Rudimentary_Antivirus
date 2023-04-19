@@ -7,10 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ProgressBar HorizontalAlignment="Left" Height="28" Margin="150,396,0,0" VerticalAlignment="Top" Width="640"/>
-        <Button x:Name="btnScan" Content="Scan" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
-        <TabControl Margin="10,0,10,59" Name="tabControl">
-            <TabItem Header="Tasks" Name="Tasks">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Welcome message -->
+        <TextBlock x:Name="lb_userName" Grid.Row="0" Margin="10" HorizontalAlignment="Right" TextAlignment="Right"
+                   Text="" FontSize="16" FontWeight="Bold"/>
+
+        <!-- Main content -->
+        <ProgressBar HorizontalAlignment="Center" Height="28" Margin="0,17,0,0" VerticalAlignment="Top" Width="780" Grid.Row="1"/>
+        <TabControl Grid.Row="1" Margin="10,50,10,59" Name="tabControl">
+            <TabItem Header="Tasks" Name="Tasks" Margin="2,-2,-2,0">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Scanner" Name="Scanner" Margin="-2,0,-2,0">
@@ -18,7 +27,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="btnTerminate" Content="Terminate" HorizontalAlignment="Left" Margin="10,396,0,0" VerticalAlignment="Top" Height="26" Width="135"/>
 
     </Grid>
 </Window>
