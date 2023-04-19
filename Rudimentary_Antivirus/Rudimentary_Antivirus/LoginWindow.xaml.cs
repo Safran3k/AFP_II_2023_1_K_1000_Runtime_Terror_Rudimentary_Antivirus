@@ -1,93 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Newtonsoft.Json;
 
 namespace Rudimentary_Antivirus
 {
-    /// <summary>
-    /// Interaction logic for LoginWindow.xaml
-    /// </summary>
     public partial class LoginWindow : Window
     {
-        private bool registered;
-
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-
-        private void btn_Login_Click(object sender, RoutedEventArgs e)
+        public async Task<bool> LoginUser(string userName, string password)
         {
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["recipeConnString"].ConnectionString);
+            string apiUrl = $"http://localhost/API/login.php?userName={userName}&password={password}";
 
-            string data = "SELECT * FROM Users WHERE username = '" + tbUserName.Text + "'";
-
-            string command = "SELECT COUNT(1) FROM Users WHERE Username = @username AND Password = @password";
-
-            try
+            using (var client = new HttpClient())
             {
-                if (connection.State == ConnectionState.Closed)
+                try
                 {
-                    connection.Open();
-                }
+                    var response = await client.GetAsync(apiUrl);
 
-                string result = string.Empty;
-                bool registered = false;
-                string username = string.Empty;
-
-                SqlCommand sqlCom1 = new SqlCommand(data, connection);
-                using (var reader = sqlCom1.ExecuteReader(CommandBehavior.SingleRow))
-                {
-                    if (reader.HasRows)
+                    if (response.IsSuccessStatusCode)
                     {
-                        if (reader.Read())
+                        string responseContent = await response.Content.ReadAsStringAsync();
+                        dynamic result = JsonConvert.DeserializeObject(responseContent);
+
+                        if (result.error == 0)
                         {
-                            result = reader["Password"].ToString().Trim();
-                            registered = true;
-                            username = reader["Username"].ToString();
+                            // User logged in successfully
+                            return true;
                         }
-
+                        else
+                        {
+                            // Login failed
+                            MessageBox.Show(result.message);
+                            return false;
+                        }
+                        
                     }
                 }
-
-                if (Encryption(tbPassword.Password.Trim()) == result)
+                catch (Exception)
                 {
-                    SqlCommand sqlCom2 = new SqlCommand(command, connection);
-                    sqlCom2.CommandType = CommandType.Text;
-                    sqlCom2.Parameters.AddWithValue("@username", tbUserName.Text.Trim());
-                    sqlCom2.Parameters.AddWithValue("@password", Encryption(tbPassword.Password.Trim()));
-                    int id = Convert.ToInt32(sqlCom2.ExecuteScalar());
+                    // Error occurred while sending request
+                    MessageBox.Show("An error occurred while logging in.");
+                    return false;
+                }
 
-                    if (id > 0)
-                    {
-                        MainWindow newWindow = new MainWindow(registered, username);
-                        newWindow.Show();
-                        connection.Close();
-                        Close();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Wrong username or password", "Login failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
             }
-            catch (Exception)
+            return false;
+        }
+
+        private async void btn_Login_Click(object sender, RoutedEventArgs e)
+        {
+            string userName = tbUserName.Text;
+            string password = tbPassword.Password;
+
+            bool success = await LoginUser(userName, password);
+
+            if (success)
             {
-                MessageBox.Show("Can not connect to the database", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("User logged in successfully!");
+                MainWindow newWindow = new MainWindow();
+                Close();
+                newWindow.Show();
+
             }
         }
 
@@ -98,25 +77,18 @@ namespace Rudimentary_Antivirus
             Close();
         }
 
-        private void btn_Exit_Click(object sender, RoutedEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure?", "Exit", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                Environment.Exit(0);
-            }
-        }
-        public static string Encryption(string password)
-        {
-            var textBytes = Encoding.UTF8.GetBytes(password);
-            return Convert.ToBase64String(textBytes);
-        }
-
         private void btn_GuestLogin_Click(object sender, RoutedEventArgs e)
         {
-            registered = false;
-            MainWindow newWindow = new MainWindow(registered, "Vendég");
+            MainWindow newWindow = new MainWindow();
             newWindow.Show();
             Close();
+
+        }
+
+        private void btn_Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            Application.Current.Shutdown();
         }
     }
 }
