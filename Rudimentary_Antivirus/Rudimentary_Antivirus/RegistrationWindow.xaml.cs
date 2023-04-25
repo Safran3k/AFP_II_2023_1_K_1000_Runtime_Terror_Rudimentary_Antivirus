@@ -32,7 +32,7 @@ namespace Rudimentary_Antivirus
     
     public partial class RegistrationWindow : Window
     {
-        RestClient usersClient = new RestClient("http://localhost/API/registration.php"); //még át kell írni
+        RestClient usersClient = new RestClient("http://localhost/API/registration.php");
         public RegistrationWindow()
         {
             InitializeComponent();
@@ -41,17 +41,15 @@ namespace Rudimentary_Antivirus
         {
             string apiUrl = "http://localhost/API/registration.php";
 
-            var registrationData = new UserRegistrationData()
-            {
-                userName = userName,
-                password = password
-            };
+            UserRegistrationData registrationData = new UserRegistrationData();
+            registrationData.userName = userName;
+            registrationData.password = password;
 
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
-                var jsonData = JsonConvert.SerializeObject(registrationData);
-                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(apiUrl, content);
+                string jsonData = JsonConvert.SerializeObject(registrationData);
+                StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await client.PostAsync(apiUrl, content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -60,22 +58,16 @@ namespace Rudimentary_Antivirus
 
                     if (result.error == 0)
                     {
-                        // User registered successfully
                         return true;
                     }
                     else
                     {
-                        // Registration failed
-                        //MessageBox.Show(jsonData);
                         MessageBox.Show(result.message.ToString());
-
-
                         return false;
                     }
                 }
                 else
                 {
-                    // Error occurred while sending request
                     MessageBox.Show("An error occurred while registering the user.");
                     return false;
                 }
@@ -93,10 +85,6 @@ namespace Rudimentary_Antivirus
             {
                 MessageBox.Show("User registered successfully!");
             }
-            else
-            {
-                // Registration failed
-            }
         }
 
 
@@ -109,7 +97,7 @@ namespace Rudimentary_Antivirus
 
         public static string Enryption(string password)
         {
-            var textBytes = Encoding.UTF8.GetBytes(password);
+            byte[] textBytes = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(textBytes);
         }
     }
