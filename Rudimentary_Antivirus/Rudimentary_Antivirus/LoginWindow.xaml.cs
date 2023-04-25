@@ -17,11 +17,11 @@ namespace Rudimentary_Antivirus
         {
             string apiUrl = $"http://localhost/API/login.php?userName={userName}&password={password}";
 
-            using (var client = new HttpClient())
+            using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    var response = await client.GetAsync(apiUrl);
+                    HttpResponseMessage response = await client.GetAsync(apiUrl);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -30,12 +30,10 @@ namespace Rudimentary_Antivirus
 
                         if (result.error == 0)
                         {
-                            // User logged in successfully
                             return true;
                         }
                         else
                         {
-                            // Login failed
                             MessageBox.Show(result.message);
                             return false;
                         }
@@ -44,7 +42,6 @@ namespace Rudimentary_Antivirus
                 }
                 catch (Exception)
                 {
-                    // Error occurred while sending request
                     MessageBox.Show("An error occurred while logging in.");
                     return false;
                 }
