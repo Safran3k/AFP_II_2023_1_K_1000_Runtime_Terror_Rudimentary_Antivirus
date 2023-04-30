@@ -34,20 +34,27 @@ namespace Rudimentary_Antivirus
         public MainWindow()
         {
             InitializeComponent();
-
-            TabItem selectedTabItem = tabControl.SelectedItem as TabItem;
             this.lb_userName.Text = "Welcome Guest";
-            if (selectedTabItem == Tasks)
-            {
-
-            }
-            else if (selectedTabItem == Scanner) { }
-            {
-
-            }
         }
 
+        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
+        }
 
+        private void btn_Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Task_Terminate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Scan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
