@@ -496,11 +496,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+      "projectUniqueName": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
       "projectName": "Rudimentary_Antivirus",
-      "projectPath": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+      "projectPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
       "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-      "outputPath": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
+      "outputPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",

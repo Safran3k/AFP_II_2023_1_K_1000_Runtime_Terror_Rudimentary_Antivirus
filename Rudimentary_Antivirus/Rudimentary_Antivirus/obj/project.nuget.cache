@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6/QNlWYCnwxqGipEYXFSGp2X5fkyKbRRTtCSValz8KwnPNxcB41ELZjiDCy5Q1xNHuzHkQ7xzrH/dPvK+FtJEw==",
+  "dgSpecHash": "LYtPt01qXrbf5PjD5d4c0Z2AjWVsuNdYHTcCNaSHij6mR6qKVDjqkLZUKlj9zLrshAh964++6014qqzSFksjGg==",
   "success": true,
-  "projectFilePath": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+  "projectFilePath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\David\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\David\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
