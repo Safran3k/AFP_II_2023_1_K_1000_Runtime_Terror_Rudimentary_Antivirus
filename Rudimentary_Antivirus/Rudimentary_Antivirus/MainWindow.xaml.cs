@@ -39,7 +39,23 @@ namespace Rudimentary_Antivirus
 
         private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (e.Source is TabControl)
+            {
+                if (Tasks.IsSelected)
+                {
+                    btn_Scan.IsEnabled = false;
+                    btn_Scan.Visibility = Visibility.Hidden;
+                    btn_Task_Terminate.IsEnabled = true;
+                    btn_Task_Terminate.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    btn_Scan.IsEnabled = true;
+                    btn_Scan.Visibility = Visibility.Visible;
+                    btn_Task_Terminate.IsEnabled = false;
+                    btn_Task_Terminate.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e)
