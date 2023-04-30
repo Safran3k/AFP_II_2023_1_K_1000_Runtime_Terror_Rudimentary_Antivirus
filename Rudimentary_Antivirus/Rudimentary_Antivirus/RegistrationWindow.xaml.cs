@@ -29,7 +29,7 @@ namespace Rudimentary_Antivirus
         public string password { get; set; }
     }
 
-    
+
     public partial class RegistrationWindow : Window
     {
         RestClient usersClient = new RestClient("http://localhost/API/registration.php");

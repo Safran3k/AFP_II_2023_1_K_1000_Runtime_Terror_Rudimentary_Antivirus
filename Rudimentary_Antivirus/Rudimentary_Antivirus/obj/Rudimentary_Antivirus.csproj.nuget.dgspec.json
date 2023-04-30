@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj": {}
+    "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj": {
+    "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+        "projectUniqueName": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
         "projectName": "Rudimentary_Antivirus",
-        "projectPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
+        "projectPath": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus.csproj",
         "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\AFP_II_2023_1_K_1000_Runtime_Terror_Rudimentary_Antivirus\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
+        "outputPath": "D:\\CsharpProjects\\Rudimentary_Antivirus\\Rudimentary_Antivirus\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,10 +47,6 @@
             "RestSharp": {
               "target": "Package",
               "version": "[110.2.0, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.8.5, )"
             }
           },
           "imports": [

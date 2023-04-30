@@ -29,9 +29,7 @@ namespace Rudimentary_Antivirus
 
             this.isRegistered = registered;
             this.username = username;
-            this.lb_userName.Text = "Welcome "+username;
-
-            // Do any other initialization here
+            this.lb_userName.Text = "Welcome " + username;
         }
         public MainWindow()
         {
@@ -39,18 +37,17 @@ namespace Rudimentary_Antivirus
 
             TabItem selectedTabItem = tabControl.SelectedItem as TabItem;
             this.lb_userName.Text = "Welcome Guest";
-            // Check if TabItem 1 is selected
             if (selectedTabItem == Tasks)
             {
-                
+
             }
             else if (selectedTabItem == Scanner) { }
             {
-                
+
             }
         }
-        
-        
+
+
 
     }
 }

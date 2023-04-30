@@ -37,7 +37,7 @@ namespace Rudimentary_Antivirus
                             MessageBox.Show(result.message);
                             return false;
                         }
-                        
+
                     }
                 }
                 catch (Exception)
