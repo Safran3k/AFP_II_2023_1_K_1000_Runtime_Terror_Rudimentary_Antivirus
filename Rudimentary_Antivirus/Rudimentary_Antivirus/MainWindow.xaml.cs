@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -71,6 +73,18 @@ namespace Rudimentary_Antivirus
         private void btn_Scan_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private string GenerateMD5HashCode(string path)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                using (FileStream stream = File.OpenRead(path))
+                {
+                    byte[] hashBytes = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hashBytes).Replace("-", "").ToUpper();
+                }
+            }
         }
     }
 }
