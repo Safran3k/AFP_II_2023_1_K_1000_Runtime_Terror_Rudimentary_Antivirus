@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rudimentary_Antivirus", "Rudimentary_Antivirus\Rudimentary_Antivirus.csproj", "{DA995928-9764-4495-B684-55D27A5AA7F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rudimentary_Antivirus", "Rudimentary_Antivirus\Rudimentary_Antivirus.csproj", "{58979A47-0BBE-4D56-B63D-98D7425236E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DA995928-9764-4495-B684-55D27A5AA7F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA995928-9764-4495-B684-55D27A5AA7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA995928-9764-4495-B684-55D27A5AA7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA995928-9764-4495-B684-55D27A5AA7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58979A47-0BBE-4D56-B63D-98D7425236E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58979A47-0BBE-4D56-B63D-98D7425236E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58979A47-0BBE-4D56-B63D-98D7425236E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58979A47-0BBE-4D56-B63D-98D7425236E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {64031E5C-7CA9-48AB-BA8A-30C51B311296}
+		SolutionGuid = {7A6D2067-AD21-45EF-9BE3-F7C69D01B282}
 	EndGlobalSection
 EndGlobal
