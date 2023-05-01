@@ -62,7 +62,9 @@ namespace Rudimentary_Antivirus
 
         private void btn_Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            LoginWindow lw = new LoginWindow();
+            this.Close();
+            lw.Show();
         }
 
         private void btn_Task_Terminate_Click(object sender, RoutedEventArgs e)

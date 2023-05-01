@@ -19,6 +19,6 @@ namespace UnitTestProject
             string encryptedString = RegistrationWindow.Enryption(password);
 
             Assert.AreEqual(expectedBase64String, encryptedString);
-        }
+        }      
     }
 }
