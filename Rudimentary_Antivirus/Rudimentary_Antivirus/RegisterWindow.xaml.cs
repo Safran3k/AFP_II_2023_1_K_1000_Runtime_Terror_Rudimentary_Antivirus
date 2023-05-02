@@ -84,6 +84,9 @@ namespace Rudimentary_Antivirus
             if (success)
             {
                 MessageBox.Show("User registered successfully!");
+                tbUserName.Clear();
+                tbPassword.Clear();
+                tbPasswordAgain.Clear();
             }
         }
 
