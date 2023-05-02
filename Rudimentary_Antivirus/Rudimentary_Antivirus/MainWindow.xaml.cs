@@ -6,6 +6,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,6 +27,7 @@ namespace Rudimentary_Antivirus
         private bool isRegistered;
         private string username;
 
+        static List<Process> runningApps;
         public MainWindow(bool registered, string username)
         {
             InitializeComponent();
@@ -36,11 +38,11 @@ namespace Rudimentary_Antivirus
 
             //Éppen futó alkalmazások kilistázása
             Process[] processes = Process.GetProcesses();
-            List<string> runningApps = processes
+            runningApps = processes
                 .Where(p => !string.IsNullOrEmpty(p.MainWindowTitle))
-                .Select(p => p.MainWindowTitle)
                 .ToList();
-            ProcessesLB.ItemsSource = runningApps;
+            ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+
 
         }
         public MainWindow()
@@ -79,7 +81,10 @@ namespace Rudimentary_Antivirus
 
         private void btn_Task_Terminate_Click(object sender, RoutedEventArgs e)
         {
-
+            Process selectedProcess = runningApps[ProcessesLB.SelectedIndex];
+            selectedProcess.Kill();
+            runningApps.Remove(selectedProcess);
+            ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
         }
 
         private void btn_Scan_Click(object sender, RoutedEventArgs e)
