@@ -25,7 +25,9 @@
         <ProgressBar HorizontalAlignment="Center" Height="28" Margin="7,17.4,7,0" VerticalAlignment="Top" Width="780" Grid.Row="1" Grid.ColumnSpan="2"/>
         <TabControl Grid.Row="1" Margin="10,50.2,9.6,64.8" Name="tabControl" SelectionChanged="tabControl_SelectionChanged" Grid.ColumnSpan="2">
             <TabItem Header="Tasks" Name="Tasks" Margin="2,-2,-2,0">
-                <Grid Background="#FFE5E5E5" Margin="0,0,-0.2,0.8"/>
+                <Grid Background="#FFE5E5E5" Margin="0,0,-0.2,0.8">
+                    <ListBox x:Name="ProcessesLB"></ListBox>
+                </Grid>
             </TabItem>
             <TabItem Header="Scanner" Name="Scanner" Margin="-2,0,-2,0">
                 <Grid Background="#FFE5E5E5">

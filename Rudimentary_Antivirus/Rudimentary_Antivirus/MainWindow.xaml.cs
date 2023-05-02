@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -32,6 +33,15 @@ namespace Rudimentary_Antivirus
             this.isRegistered = registered;
             this.username = username;
             this.lb_userName.Text = "Welcome " + username;
+
+            //Éppen futó alkalmazások kilistázása
+            Process[] processes = Process.GetProcesses();
+            List<string> runningApps = processes
+                .Where(p => !string.IsNullOrEmpty(p.MainWindowTitle))
+                .Select(p => p.MainWindowTitle)
+                .ToList();
+            ProcessesLB.ItemsSource = runningApps;
+
         }
         public MainWindow()
         {
@@ -76,6 +86,9 @@ namespace Rudimentary_Antivirus
         {
 
         }
+
+
+
 
         private string GenerateMD5HashCode(string path)
         {
