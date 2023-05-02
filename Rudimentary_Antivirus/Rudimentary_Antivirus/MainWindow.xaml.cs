@@ -28,6 +28,7 @@ namespace Rudimentary_Antivirus
         private string username;
 
         static List<Process> runningApps;
+        private System.Windows.Threading.DispatcherTimer timer;
         public MainWindow(bool registered, string username)
         {
             InitializeComponent();
@@ -44,6 +45,11 @@ namespace Rudimentary_Antivirus
             ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
 
 
+            // Timer létrehozása, amely minden másodpercben frissíti a runningApps listát
+            timer = new System.Windows.Threading.DispatcherTimer();
+            timer.Tick += new EventHandler(Timer_Tick);
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Start();
         }
         public MainWindow()
         {
@@ -92,7 +98,15 @@ namespace Rudimentary_Antivirus
 
         }
 
-
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            //Éppen futó alkalmazások kilistázása
+            Process[] processes = Process.GetProcesses();
+            runningApps = processes
+                .Where(p => !string.IsNullOrEmpty(p.MainWindowTitle))
+                .ToList();
+            ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+        }
 
 
         private string GenerateMD5HashCode(string path)
