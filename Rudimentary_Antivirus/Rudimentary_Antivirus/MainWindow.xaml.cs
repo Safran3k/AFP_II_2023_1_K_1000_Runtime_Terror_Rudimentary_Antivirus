@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -65,6 +68,8 @@ namespace Rudimentary_Antivirus
                 {
                     btn_Scan.IsEnabled = false;
                     btn_Scan.Visibility = Visibility.Hidden;
+                    btn_Flag.IsEnabled = false;
+                    btn_Flag.Visibility = Visibility.Hidden;
                     btn_Task_Terminate.IsEnabled = true;
                     btn_Task_Terminate.Visibility = Visibility.Visible;
                 }
@@ -72,6 +77,8 @@ namespace Rudimentary_Antivirus
                 {
                     btn_Scan.IsEnabled = true;
                     btn_Scan.Visibility = Visibility.Visible;
+                    btn_Flag.IsEnabled = true;
+                    btn_Flag.Visibility = Visibility.Visible;
                     btn_Task_Terminate.IsEnabled = false;
                     btn_Task_Terminate.Visibility = Visibility.Hidden;
                 }
@@ -94,6 +101,44 @@ namespace Rudimentary_Antivirus
         }
 
         private void btn_Scan_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.DefaultExt = ".txt";
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filePath = openFileDialog.FileName;
+                string fileName = System.IO.Path.GetFileName(filePath);
+                string hash = GenerateMD5HashCode(filePath);
+
+                RestClient client = new RestClient("http://localhost/API");
+                var request = new RestRequest("hashCodes.php", Method.Get);
+                request.AddParameter("fileHashCode", hash);
+                RestResponse response = client.Execute(request);
+
+                JObject json = JObject.Parse(response.Content);
+                string message = (string)json["message"];
+
+                if (message == "The hash code is in the table.")
+                {
+                    MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (message == "The hash code is not in the table.")
+                {
+                    MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void btn_Flag_Click(object sender, RoutedEventArgs e)
         {
 
         }
