@@ -103,16 +103,58 @@ namespace Rudimentary_Antivirus
 
         private void btn_Scan_Click(object sender, RoutedEventArgs e)
         {
-            //Felhasználó
-            var dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
 
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (isRegistered)
             {
-                string folderPath = dialog.FileName;
+                //Felhasználó
+                var dialog = new CommonOpenFileDialog();
+                dialog.IsFolderPicker = true;
 
-                foreach (string filePath in Directory.GetFiles(folderPath))
+                if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
+                    string folderPath = dialog.FileName;
+
+                    foreach (string filePath in Directory.GetFiles(folderPath))
+                    {
+                        string fileName = System.IO.Path.GetFileName(filePath);
+                        string hash = GenerateMD5HashCode(filePath);
+
+                        RestClient client = new RestClient("http://localhost/API");
+                        var request = new RestRequest("hashCodes.php", Method.Get);
+                        request.AddParameter("fileHashCode", hash);
+                        RestResponse response = client.Execute(request);
+
+                        JObject json = JObject.Parse(response.Content);
+                        string message = (string)json["message"];
+
+                        if (message == "The hash code is in the table.")
+                        {
+                            MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                        else if (message == "The hash code is not in the table.")
+                        {
+                            MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                //Vendég
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+
+                openFileDialog.DefaultExt = ".txt";
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+                bool? result = openFileDialog.ShowDialog();
+
+                if (result == true)
+                {
+                    string filePath = openFileDialog.FileName;
                     string fileName = System.IO.Path.GetFileName(filePath);
                     string hash = GenerateMD5HashCode(filePath);
 
@@ -138,43 +180,11 @@ namespace Rudimentary_Antivirus
                     }
                 }
             }
-
-            //Vendég
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.DefaultExt = ".txt";
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-
-            bool? result = openFileDialog.ShowDialog();
-
-            if (result == true)
-            {
-                string filePath = openFileDialog.FileName;
-                string fileName = System.IO.Path.GetFileName(filePath);
-                string hash = GenerateMD5HashCode(filePath);
-
-                RestClient client = new RestClient("http://localhost/API");
-                var request = new RestRequest("hashCodes.php", Method.Get);
-                request.AddParameter("fileHashCode", hash);
-                RestResponse response = client.Execute(request);
-
-                JObject json = JObject.Parse(response.Content);
-                string message = (string)json["message"];
-
-                if (message == "The hash code is in the table.")
-                {
-                    MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-                else if (message == "The hash code is not in the table.")
-                {
-                    MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
         }
+            
+
+
+            
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)
         {
