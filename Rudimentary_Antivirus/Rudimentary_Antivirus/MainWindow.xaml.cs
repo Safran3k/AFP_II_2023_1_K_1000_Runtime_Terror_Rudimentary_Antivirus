@@ -108,11 +108,21 @@ namespace Rudimentary_Antivirus
             {
                 var dialog = new CommonOpenFileDialog();
                 dialog.IsFolderPicker = true;
-
+                bool hasVirus = false;
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
                     string folderPath = dialog.FileName;
-                    ScanFolder(folderPath);
+                    ScanFolder(folderPath, hasVirus);
+                    
+                    if (hasVirus)
+                    {
+                        MessageBox.Show($"A keresett mappában vírus található", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"A keresett mappában nem található vírus", "Minden rendben", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    }
                 }
             }
             else
@@ -157,7 +167,7 @@ namespace Rudimentary_Antivirus
 
 
 
-        private void ScanFolder(string folderPath)
+        private void ScanFolder(string folderPath, bool hasVirus)
         {
             foreach (string filePath in Directory.EnumerateFiles(folderPath))
             {
@@ -172,13 +182,16 @@ namespace Rudimentary_Antivirus
                 JObject json = JObject.Parse(response.Content);
                 string message = (string)json["message"];
 
+
+
                 if (message == "The hash code is in the table.")
                 {
-                    MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    hasVirus = true;
                 }
                 else if (message == "The hash code is not in the table.")
                 {
-                    MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -188,8 +201,10 @@ namespace Rudimentary_Antivirus
 
             foreach (string subFolderPath in Directory.EnumerateDirectories(folderPath))
             {
-                ScanFolder(subFolderPath);
+                ScanFolder(subFolderPath, hasVirus);
             }
+
+
         }
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)
