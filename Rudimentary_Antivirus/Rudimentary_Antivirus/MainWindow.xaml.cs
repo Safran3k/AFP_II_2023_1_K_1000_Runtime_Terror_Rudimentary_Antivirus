@@ -20,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Rudimentary_Antivirus
 {
@@ -209,6 +210,44 @@ namespace Rudimentary_Antivirus
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)
         {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.DefaultExt = ".txt";
+            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filePath = openFileDialog.FileName;
+                string fileName = System.IO.Path.GetFileName(filePath);
+                string hash = GenerateMD5HashCode(filePath);
+
+                RestClient client = new RestClient("http://localhost/API");
+                var request = new RestRequest("hashCodes.php", Method.Post);
+                JObject body = new JObject();
+                body.Add("fileHashCode", hash);
+                request.AddParameter("application/json", body.ToString(), ParameterType.RequestBody);
+                request.AddHeader("Content-Type", "application/json");
+                RestResponse response = client.Execute(request);
+
+                JObject json = JObject.Parse(response.Content);
+                string message = (string)json["message"];
+
+                if (message == "Actual file flagged, and stored in database!")
+                {
+                    MessageBox.Show($"A {fileName} hash kódját elhelyeztük az adatbázisban! Köszönjük hogy jelezte :)", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+                else if (message == "Actual file hash code is already in database!")
+                {
+                    MessageBox.Show($"A {fileName} hash kódja már benne van az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
 
         }
 
