@@ -170,6 +170,14 @@ namespace Rudimentary_Antivirus
 
         private void ScanFolder(string folderPath, bool hasVirus)
         {
+            string projectFolder = Directory.GetCurrentDirectory();
+            string quarantineFolder = System.IO.Path.Combine(projectFolder, "quarantine");
+            // Create the quarantine folder if it doesn't exist
+            if (!Directory.Exists(quarantineFolder))
+            {
+                Directory.CreateDirectory(quarantineFolder);
+            }
+
             foreach (string filePath in Directory.EnumerateFiles(folderPath))
             {
                 string fileName = System.IO.Path.GetFileName(filePath);
@@ -183,20 +191,27 @@ namespace Rudimentary_Antivirus
                 JObject json = JObject.Parse(response.Content);
                 string message = (string)json["message"];
 
-
-
                 if (message == "The hash code is in the table.")
                 {
-                    //MessageBox.Show($"A {fileName} hash kódja megtalálható az adatbázisban!", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    hasVirus = true;
+                    // Move the file to the quarantine folder
+                    string quarantineFilePath = System.IO.Path.Combine(quarantineFolder, fileName);
+                    if (!File.Exists(quarantineFilePath))
+                    {
+                        File.Move(filePath, quarantineFilePath);
+                        hasVirus = true;
+                    }
+                    else
+                    {
+                        File.Delete(filePath);
+                    }
                 }
                 else if (message == "The hash code is not in the table.")
                 {
-                    //MessageBox.Show($"A {fileName} hash kódja nem található meg az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // No virus found, continue scanning
                 }
                 else
                 {
-                    MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -204,9 +219,8 @@ namespace Rudimentary_Antivirus
             {
                 ScanFolder(subFolderPath, hasVirus);
             }
-
-
         }
+
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)
         {
