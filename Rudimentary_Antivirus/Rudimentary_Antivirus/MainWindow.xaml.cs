@@ -96,10 +96,18 @@ namespace Rudimentary_Antivirus
 
         private void btn_Task_Terminate_Click(object sender, RoutedEventArgs e)
         {
-            Process selectedProcess = runningApps[ProcessesLB.SelectedIndex];
-            selectedProcess.Kill();
-            runningApps.Remove(selectedProcess);
-            ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+            if (isRegistered)
+            {
+                Process selectedProcess = runningApps[ProcessesLB.SelectedIndex];
+                selectedProcess.Kill();
+                runningApps.Remove(selectedProcess);
+                ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+
+            }
+            else
+            {
+                MessageBox.Show("Kérlek jelentkezz be ennek a funkciónak a használatához!");
+            }
         }
 
         private void btn_Scan_Click(object sender, RoutedEventArgs e)
@@ -224,44 +232,50 @@ namespace Rudimentary_Antivirus
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)
         {
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-
-            openFileDialog.DefaultExt = ".txt";
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
-
-            bool? result = openFileDialog.ShowDialog();
-
-            if (result == true)
+            if (isRegistered)
             {
-                string filePath = openFileDialog.FileName;
-                string fileName = System.IO.Path.GetFileName(filePath);
-                string hash = GenerateMD5HashCode(filePath);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
 
-                RestClient client = new RestClient("http://localhost/API");
-                var request = new RestRequest("hashCodes.php", Method.Post);
-                JObject body = new JObject();
-                body.Add("fileHashCode", hash);
-                request.AddParameter("application/json", body.ToString(), ParameterType.RequestBody);
-                request.AddHeader("Content-Type", "application/json");
-                RestResponse response = client.Execute(request);
+                openFileDialog.DefaultExt = ".txt";
+                openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
 
-                JObject json = JObject.Parse(response.Content);
-                string message = (string)json["message"];
+                bool? result = openFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    string filePath = openFileDialog.FileName;
+                    string fileName = System.IO.Path.GetFileName(filePath);
+                    string hash = GenerateMD5HashCode(filePath);
 
-                if (message == "Actual file flagged, and stored in database!")
-                {
-                    MessageBox.Show($"A {fileName} hash kódját elhelyeztük az adatbázisban! Köszönjük hogy jelezte :)", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-                else if (message == "Actual file hash code is already in database!")
-                {
-                    MessageBox.Show($"A {fileName} hash kódja már benne van az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    RestClient client = new RestClient("http://localhost/API");
+                    var request = new RestRequest("hashCodes.php", Method.Post);
+                    JObject body = new JObject();
+                    body.Add("fileHashCode", hash);
+                    request.AddParameter("application/json", body.ToString(), ParameterType.RequestBody);
+                    request.AddHeader("Content-Type", "application/json");
+                    RestResponse response = client.Execute(request);
+
+                    JObject json = JObject.Parse(response.Content);
+                    string message = (string)json["message"];
+
+                    if (message == "Actual file flagged, and stored in database!")
+                    {
+                        MessageBox.Show($"A {fileName} hash kódját elhelyeztük az adatbázisban! Köszönjük hogy jelezte :)", "Gyanús fájl", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else if (message == "Actual file hash code is already in database!")
+                    {
+                        MessageBox.Show($"A {fileName} hash kódja már benne van az adatbázisban!", "Téves riasztás", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("A flag-eléshez be kell jelentkezned!");
+            }
+            
 
         }
 
