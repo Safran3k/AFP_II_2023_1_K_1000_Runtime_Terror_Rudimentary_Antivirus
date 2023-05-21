@@ -26,14 +26,14 @@ Az Alfa tesztelés során a vizsgált elemek mind hibátlanul működtek mindenf
 
 | Vizsgálat | Tesztelés időpontja | Elvárás | Eredmény | Hibák |
 | :---: | --- | --- | --- | --- |
-| B1-Task | 2023.05.21. | Sikeres bejelentkezés után megjelennek az éppen futó programok a listboxban | Az éppen futó programok megjelennek | Nincs |
-| B2-Task | 2023.05.21. | Vendégként való bejelentkezés után nem jelennek meg az éppen futó fájlok | Az éppen futó programok nem jelennek meg | Nincs |
-| B3-Task | 2023.05.21. | Feladat befejezése gombra kattintva a kijelölt fájl bezáródik | Sikeresen bezáródik a kijelölt elem | Nincs |
+| B2-Vendég(Task) | 2023.05.21. | Vendégként való bejelentkezés után nem jelennek meg az éppen futó fájlok | Az éppen futó programok nem jelennek meg | Nincs |
+| B1-Bejelentkezés(Task) | 2023.05.21. | Sikeres bejelentkezés után megjelennek az éppen futó programok a listboxban | Az éppen futó programok megjelennek | Nincs |
+| B3-Bejelentkezés(Task) | 2023.05.21. | Feladat befejezése gombra kattintva a kijelölt fájl bezáródik | Sikeresen bezáródik a kijelölt elem | Nincs |
+| B5-Bejelentkezés(Scanner) | 2023.05.21. | Az "Ellenőrzés" gombra kattintva megnyílik a fájlkezelő | A fájlkezelő megnyílik | Nincs |
+| B7-Bejelentkezés(Scanner) | 2023.05.21. | Gyanús fájl gombra kattintva megnyílik a fájlkezelő | A fájlkezelő megnyílik | Nincs |
+| B8-Bejelentkezés(Scanner) | 2023.05.21. | Gyanús fájl kiválasztása után elhelyezi a hash kódját a db-ben | A hash kód elhelyeződik a db-ben | Nincs |
 | B4-Scanner | 2023.05.21. | A "Scanner" fülre kattintva átvált a Scannerre | Sikeresen átvált | Nincs |
-| B5-Scanner | 2023.05.21. | Az "Ellenőrzés" gombra kattintva megnyílik a fájlkezelő | A fájlkezelő megnyílik | Nincs |
 | B6-Scanner | 2023.05.21. | A vizsgálandó mappa kiválasztása után a vírusirtó jelzi annak biztonságosságát | Sikeresen jelzi | Nincs |
-| B7-Scanner | 2023.05.21. | Gyanús fájl gombra kattintva megnyílik a fájlkezelő | A fájlkezelő megnyílik | Nincs |
-| B8-Scanner | 2023.05.21. | Gyanús fájl kiválasztása után elhelyezi a hash kódját a db-ben | A hash kód elhelyeződik a db-ben | Nincs |
 | B9-Scanner | 2023.05.21. | Kilépés gombra kattintva a vírusirtó kijelentkezik a felhasználóból | Sikeres kilépés | Nincs |
 
 A Béta teszt sikeresen zajlott.
