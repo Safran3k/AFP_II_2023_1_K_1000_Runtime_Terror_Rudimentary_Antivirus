@@ -112,8 +112,8 @@ namespace UnitTestProject
         [TestMethod]
         public async Task RegisterUser_RegistrationSuccess_ReturnsTrue()
         {
-            string userName = "newtestuser2";
-            string password = "newtestpassword2";
+            string userName = "newtestuser3";
+            string password = "newtestpassword3";
             string apiUrl = "http://localhost/API/registration.php";
 
             var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
@@ -162,8 +162,32 @@ namespace UnitTestProject
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public async Task RegisterUser_HttpError_ReturnsFalse()
+        {
+            string userName = "testuser";
+            string password = "testpassword";
+            string apiUrl = "http://localhost/API/registration.php";
+
+            var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+            mockHandler
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(req => req.RequestUri.ToString() == apiUrl && req.Method == HttpMethod.Post),
+                    ItExpr.IsAny<System.Threading.CancellationToken>()).ThrowsAsync(new HttpRequestException());
+
+            var httpClient = new HttpClient(mockHandler.Object);
+            registrationWindow._httpClient = httpClient;
+
+            bool result = await registrationWindow.RegisterUser(userName, password);
+
+            Assert.IsFalse(result);
+        }
     }
-
-
 }
+
+
+
 
