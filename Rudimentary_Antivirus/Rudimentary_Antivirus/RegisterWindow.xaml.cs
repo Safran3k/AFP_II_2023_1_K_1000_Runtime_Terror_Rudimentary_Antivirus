@@ -103,5 +103,8 @@ namespace Rudimentary_Antivirus
             byte[] textBytes = Encoding.UTF8.GetBytes(password);
             return Convert.ToBase64String(textBytes);
         }
+
+        public HttpClient _httpClient;
+
     }
 }

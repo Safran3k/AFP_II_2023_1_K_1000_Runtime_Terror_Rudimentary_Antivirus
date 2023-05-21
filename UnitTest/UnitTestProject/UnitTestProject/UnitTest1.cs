@@ -30,6 +30,7 @@ namespace UnitTestProject
         private LoginWindow loginWindow;
         private Mock<HttpMessageHandler> httpMessageHandlerMock;
         private HttpClient httpClient;
+        private RegistrationWindow registrationWindow;
 
         [TestInitialize]
         public void Setup()
@@ -37,6 +38,7 @@ namespace UnitTestProject
             httpMessageHandlerMock = new Mock<HttpMessageHandler>();
             httpClient = new HttpClient(httpMessageHandlerMock.Object);
             loginWindow = new LoginWindow(httpClient);
+            registrationWindow = new RegistrationWindow();
         }
 
         [TestMethod]
@@ -106,6 +108,34 @@ namespace UnitTestProject
 
             Assert.IsFalse(result);
         }
+
+        [TestMethod]
+        public async Task RegisterUser_RegistrationSuccess_ReturnsTrue()
+        {
+            string userName = "newtestuser2";
+            string password = "newtestpassword2";
+            string apiUrl = "http://localhost/API/registration.php";
+
+            var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+            mockHandler
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.Is<HttpRequestMessage>(req => req.RequestUri.ToString() == apiUrl && req.Method == HttpMethod.Post),
+                    ItExpr.IsAny<System.Threading.CancellationToken>()).ReturnsAsync(new HttpResponseMessage
+                    {
+                        StatusCode = HttpStatusCode.OK,
+                        Content = new StringContent("{ \"error\": 0 }"),
+                    });
+
+            var httpClient = new HttpClient(mockHandler.Object);
+            registrationWindow._httpClient = httpClient;
+            
+            bool result = await registrationWindow.RegisterUser(userName, password);
+
+            Assert.IsTrue(result);
+        }
+
     }
 
 
