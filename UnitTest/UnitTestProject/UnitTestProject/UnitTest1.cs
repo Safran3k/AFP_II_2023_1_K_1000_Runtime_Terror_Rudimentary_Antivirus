@@ -89,9 +89,23 @@ namespace UnitTestProject
             // Assert
             Assert.IsFalse(result);
         }
-
         
+        [TestMethod]
+        public async Task LoginUser_HttpError_False()
+        {
+            string userName = "testuser";
+            string password = "testpassword";
+            string apiUrl = $"http://localhost/API/login.php?userName={userName}&password={password}";
 
+            httpMessageHandlerMock
+                .Protected()
+                .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+                .ThrowsAsync(new HttpRequestException("An error occurred while sending the request."));
+
+            bool result = await loginWindow.LoginUser(userName, password);
+
+            Assert.IsFalse(result);
+        }
     }
 
 
