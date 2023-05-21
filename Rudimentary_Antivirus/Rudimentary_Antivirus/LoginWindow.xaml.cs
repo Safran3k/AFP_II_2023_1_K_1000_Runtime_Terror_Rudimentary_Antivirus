@@ -87,5 +87,12 @@ namespace Rudimentary_Antivirus
             Close();
             Application.Current.Shutdown();
         }
+
+        private readonly HttpClient _httpClient;
+        public LoginWindow(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+            InitializeComponent();
+        }
     }
 }
