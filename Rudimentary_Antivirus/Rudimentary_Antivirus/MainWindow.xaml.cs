@@ -110,7 +110,7 @@ namespace Rudimentary_Antivirus
             }
         }
 
-        private void btn_Scan_Click(object sender, RoutedEventArgs e)
+        private async void btn_Scan_Click(object sender, RoutedEventArgs e)
         {
 
             if (isRegistered)
@@ -120,8 +120,10 @@ namespace Rudimentary_Antivirus
                 bool hasVirus = false;
                 if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
                 {
+
                     string folderPath = dialog.FileName;
-                    ScanFolder(folderPath, hasVirus);
+                    ProgressBar progressBar = this.progressBar;
+                    await ScanFolder(folderPath, hasVirus, progressBar);
                     
                     if (hasVirus)
                     {
@@ -132,6 +134,8 @@ namespace Rudimentary_Antivirus
                         MessageBox.Show($"A keresett mappában nem található vírus", "Minden rendben", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     }
+                    progressBar.Value = 0;
+
                 }
             }
             else
@@ -176,7 +180,7 @@ namespace Rudimentary_Antivirus
 
 
 
-        private void ScanFolder(string folderPath, bool hasVirus)
+        private async Task ScanFolder(string folderPath, bool hasVirus, ProgressBar progressBar)
         {
             string projectFolder = Directory.GetCurrentDirectory();
             string quarantineFolder = System.IO.Path.Combine(projectFolder, "quarantine");
@@ -186,7 +190,11 @@ namespace Rudimentary_Antivirus
                 Directory.CreateDirectory(quarantineFolder);
             }
 
-            foreach (string filePath in Directory.EnumerateFiles(folderPath))
+            string[] files = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
+            int totalFiles = files.Length;
+            int processedFiles = 0;
+
+            foreach (string filePath in files)
             {
                 string fileName = System.IO.Path.GetFileName(filePath);
                 string hash = GenerateMD5HashCode(filePath);
@@ -221,13 +229,29 @@ namespace Rudimentary_Antivirus
                 {
                     MessageBox.Show("Valami hiba történt az adatok lekérdezése során!", "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+
+                processedFiles++;
+                int progressPercentage = (int)((processedFiles / (double)totalFiles) * 100);
+                await Task.Delay(10); // Kis késleltetés, hogy a UI frissülhessen
+                progressBar.Dispatcher.Invoke(() => progressBar.Value = progressPercentage);
             }
 
             foreach (string subFolderPath in Directory.EnumerateDirectories(folderPath))
             {
-                ScanFolder(subFolderPath, hasVirus);
+                await ScanFolder(subFolderPath, hasVirus, progressBar);
             }
         }
+
+
+        private async void StartScanButton_Click(object sender, RoutedEventArgs e)
+        {
+            // ...
+
+            
+
+            // ...
+        }
+
 
 
         private void btn_Flag_Click(object sender, RoutedEventArgs e)

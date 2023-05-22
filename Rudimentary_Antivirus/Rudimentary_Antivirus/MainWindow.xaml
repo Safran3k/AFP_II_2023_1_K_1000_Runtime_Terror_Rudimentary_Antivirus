@@ -22,7 +22,7 @@
                    Text="" FontSize="16" FontWeight="Bold" Grid.Column="1"/>
 
         <!-- Main content -->
-        <ProgressBar HorizontalAlignment="Center" Height="28" Margin="7,17.4,7,0" VerticalAlignment="Top" Width="780" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <ProgressBar x:Name="progressBar" HorizontalAlignment="Center" Height="28" Margin="7,17.4,7,0" VerticalAlignment="Top" Width="780" Grid.Row="1" Grid.ColumnSpan="2"/>
         <TabControl Grid.Row="1" Margin="10,50.2,9.6,64.8" Name="tabControl" SelectionChanged="tabControl_SelectionChanged" Grid.ColumnSpan="2">
             <TabItem Header="Tasks" Name="Tasks" Margin="2,-2,-2,0">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-0.2,0.8">
