@@ -96,12 +96,21 @@ namespace Rudimentary_Antivirus
 
         private void btn_Task_Terminate_Click(object sender, RoutedEventArgs e)
         {
+
             if (isRegistered)
             {
-                Process selectedProcess = runningApps[ProcessesLB.SelectedIndex];
-                selectedProcess.Kill();
-                runningApps.Remove(selectedProcess);
-                ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+                if (ProcessesLB.SelectedIndex >= 0)
+                {
+                    Process selectedProcess = runningApps[ProcessesLB.SelectedIndex];
+                    selectedProcess.Kill();
+                    runningApps.Remove(selectedProcess);
+                    ProcessesLB.ItemsSource = runningApps.Select(p => p.MainWindowTitle).ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Válassz ki egy feladatot!");
+                }
+
 
             }
             else
@@ -240,16 +249,6 @@ namespace Rudimentary_Antivirus
             {
                 await ScanFolder(subFolderPath, hasVirus, progressBar);
             }
-        }
-
-
-        private async void StartScanButton_Click(object sender, RoutedEventArgs e)
-        {
-            // ...
-
-            
-
-            // ...
         }
 
 
